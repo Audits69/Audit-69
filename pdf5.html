@@ -57,6 +57,10 @@
         display: block;
       }
 
+      .bg{
+        background-color: gainsboro;
+      }
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
   </head>
@@ -84,13 +88,13 @@
                       <a href="#!" class="nav-link  fw-semibold dropdown-toggle px-4 mb-lg-0 mb-2" style="color: #ffff;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Projects</a>
 
                       
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="pdf1.html">pdf1</a></li>
-                        <li><a class="dropdown-item" href="pdf2.html">pdf2</a></li>
-                        <li><a class="dropdown-item" href="pdf3.html">pdf3</a></li>
-                        <li><a class="dropdown-item" href="pdf4.html">pdf4</a></li>
-                        <li><a class="dropdown-item" href="pdf5.html">pdf5</a></li>
-                        <li><a class="dropdown-item" href="pdf6.html">pdf6</a></li>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" >
+                        <li><a class="dropdown-item my-1" href="pdf1.html">pdf1</a></li>
+                        <li><a class="dropdown-item my-1" href="pdf2.html">pdf2</a></li>
+                        <li><a class="dropdown-item my-1" href="pdf3.html">pdf3</a></li>
+                        <li><a class="dropdown-item my-1" href="pdf4.html">pdf4</a></li>
+                        <li><a class="dropdown-item my-1 bg" href="pdf5.html">pdf5</a></li>
+                        <li><a class="dropdown-item my-1" href="pdf6.html">pdf6</a></li>
                       </ul>
                     </div>
                 </div>
@@ -113,59 +117,6 @@
             </div>
         </div>
     </nav>
-     <div class="mt-5">
-      <button id="download" class="btn btn-primary mt-5 mb-4">
-        Download PDF
-      </button>
-     </div>
-    </div>
-
-    <script>
-      // download button functionality
-      document
-        .getElementById("download")
-        .addEventListener("click", function () {
-          var link = document.createElement("a");
-          link.href = "/pdf1.pdf";
-          link.download = "E book.pdf";
-          link.dispatchEvent(new MouseEvent("click"));
-        });
-
-      // Add the link to your PDF FILE.
-      const pdfUrl = "/pdf1.pdf";
-
-      // Get the container element
-      const container = document.getElementById("pdf-container");
-
-      // Load PDF document
-      pdfjsLib.getDocument(pdfUrl).promise.then((pdfDoc) => {
-        // This for loop, loops through all of the pages and loads the doc
-        for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-          pdfDoc.getPage(pageNum).then((page) => {
-            // Create a viewport to render the PDF page. The higher number you add to the scale, the bigger the pdf file will look.
-            const viewport = page.getViewport({ scale: 0.7 });
-
-            // Set the dimensions of the container to match the PDF page
-            container.style.width = viewport.width + "px";
-            container.style.height = viewport.height + "px";
-
-            // Prepare the canvas element to render the PDF page
-            const canvas = document.createElement("canvas");
-            container.appendChild(canvas);
-
-            // Set the canvas dimensions
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-
-            // Render the PDF page on the canvas
-            const renderContext = {
-              canvasContext: canvas.getContext("2d"),
-              viewport: viewport,
-            };
-            page.render(renderContext);
-          });
-        }
-      });
-    </script>
+   
   </body>
 </html>
