@@ -145,7 +145,7 @@
         for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
           pdfDoc.getPage(pageNum).then((page) => {
             // Create a viewport to render the PDF page. The higher number you add to the scale, the bigger the pdf file will look.
-            const viewport = page.getViewport({ scale: 0.7 });
+            const viewport = page.getViewport({ scale: 0.25 });
 
             // Set the dimensions of the container to match the PDF page
             container.style.width = viewport.width + "px";
